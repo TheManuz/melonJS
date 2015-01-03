@@ -682,7 +682,7 @@
             for (var i = this.children.length, obj; i--, (obj = this.children[i]);) {
                 isFloating = obj.floating;
                 if ((obj.inViewport || isFloating) && obj.isRenderable) {
-                    if (isFloating === true) {
+                    if (isFloating === true && !this.floating) {
                         // translate to object
                         renderer.translate(
                             viewport.screenX - this.pos.x,
@@ -693,7 +693,7 @@
                     // draw the object
                     obj.draw(renderer, rect);
 
-                    if (isFloating === true) {
+                    if (isFloating === true && !this.floating) {
                         // translate back to viewport
                         renderer.translate(
                             this.pos.x - viewport.screenX,
